@@ -1,0 +1,70 @@
+
+
+
+<ion-header>
+    <ion-toolbar color="primary"> 
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-buttons slot="start">
+              <button class="botongeneral"  ion-button icon-only (click)="act()">
+                <ion-icon name="flash" ></ion-icon>
+              </button>
+            </ion-buttons>
+            <p>  Mensajes</p>
+     </ion-toolbar>
+  </ion-header>
+
+ 
+  
+  <ion-content>
+      <img mat-card-image src="assets/imgs/live-01.jpg">
+      <!-- <p>{{this.id_usuario_sesion}}</p> -->
+      <ion-label position="floating">Mensajes de el(la) desaparecido(a) {{ nombre }}</ion-label>
+        <ion-item>
+          <ion-label position="floating">Mensaje</ion-label>
+          <ion-input [(ngModel)]="texto_mensaje" ></ion-input>
+          
+        </ion-item>
+      <ion-grid>
+        <ion-row>
+            <ion-col >
+          <button class="botonEditar"  (click)="enviarmensaje()" ion-button   >
+            <ion-icon name="chatbubbles"></ion-icon>
+            <div>Enviar Mensaje</div>
+          </button>
+        </ion-col >
+      </ion-row>
+      <ion-row>
+          <ion-col >  
+          <button class="botonEditar"  (click)="subirFoto()" ion-button   >
+              <ion-icon name="cash"></ion-icon>
+            <div>Enviar Foto</div>
+
+            </button>
+          </ion-col >
+        </ion-row>
+        <ion-row>
+            <ion-col >  
+            <button class="botonEditar"  (click)="subirVideo()" ion-button   >
+                <ion-icon name="film"></ion-icon>
+            <div>Enviar Video</div>
+
+              </button>
+            </ion-col >
+          </ion-row>
+        </ion-grid>
+        
+      <ion-card *ngFor="let a of data; let index = index">
+  
+        
+          <ion-card-content>
+            <p>Enviado por {{ a.nombre }}</p>
+              <ion-icon name="chatbubbles"></ion-icon>
+              {{a.mensaje}} 
+          </ion-card-content>
+          </ion-card>
+     
+  </ion-content>
+  
+ 

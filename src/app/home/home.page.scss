@@ -1,0 +1,48 @@
+// .welcome-card ion-img {
+//   max-height: 35vh;
+//   overflow: hidden;
+// }
+ 
+  .bg-class{
+      background-image:  url('/assets/imgs/fondo.jpg') !important;
+      background-size: cover;
+      --background: #fff0;
+  }
+  :host
+  {
+    background: initial !important;
+
+  }
+  .roundtx
+  {
+    background-color: white;
+    border-radius: 15px;
+    // padding: 9px;
+    margin: 0px;
+  }
+  .bl{
+    color: white;
+  }
+  .wi
+  {
+    width: 100%;
+    border-radius: 66px;
+    height: 37px; 
+    margin-bottom: 10px;
+}
+.papaddInpt
+{
+  margin: 3px;
+  padding-left: 10px !important;
+}
+ .redes
+ {
+  border-radius: 14px; 
+  padding: 2px;
+  width: 100%;
+  margin: 2px;
+  
+ } 
+
+    
+ 

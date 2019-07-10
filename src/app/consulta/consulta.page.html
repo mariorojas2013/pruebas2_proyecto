@@ -1,0 +1,102 @@
+
+
+
+<ion-header>
+    <ion-toolbar color="primary"> 
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-buttons slot="start">
+            <button class="botongeneral"  ion-button icon-only (click)="act()">
+              <ion-icon name="flash" ></ion-icon>
+            </button>
+          </ion-buttons>
+          <ion-searchbar  [(ngModel)]="searchTerm"  animated (ionInput)="filterItems2($event)" animated placeholder="Buscar..."> </ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+
+ 
+  
+  <ion-content>
+      
+
+      <img mat-card-image src="assets/imgs/live-01.jpg">
+      <ion-card *ngFor="let a of filterItemsw; let index = index">
+ 
+          <ion-card-header>
+            <p class="rojD">DESAPARECIDO/A</p>
+            <!-- <ion-card-subtitle>Desaparecio el -Fecha-</ion-card-subtitle> -->
+            <ion-card-title> {{ a.nombres }} {{  a.apellidos }}  </ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+              <ion-slides>
+                  <ion-slide>
+                      <img src="assets/imgs/{{  a.foto1 }}">
+                  </ion-slide>
+                  <ion-slide>
+                      <img src="assets/imgs/{{  a.foto2 }}">
+                  </ion-slide>
+                  <ion-slide>
+                      <img src="assets/imgs/{{  a.foto3 }}">
+                  </ion-slide>
+                </ion-slides>
+    <p><ion-icon name="color-wand"></ion-icon> Color de ojos: {{ a.color_ojos }}</p>
+    <p><ion-icon name="color-wand"></ion-icon> color de cabello: {{ a.color_cabello }}</p>
+    <p><ion-icon name="color-wand"></ion-icon> color de piel: {{ a.color_piel }}</p>
+    <p><ion-icon name="man"></ion-icon> Peso promedio: {{ a.peso_promedio }}</p>
+    <p><ion-icon name="man"></ion-icon> estatura: {{ a.estatura }}</p>
+    <p><ion-icon name="male"></ion-icon> Genero: {{ a.genero }}</p>
+    <p><ion-icon name="calendar"></ion-icon> Fecha de nacimiento: {{ a.fecha_nacimiento }}</p>
+    <p><ion-icon name="calendar"></ion-icon> enfermedades: {{ a.enfermedades }}</p>
+    <p><ion-icon name="calendar"></ion-icon> Última Ubicación: Cerca a la calle 43 con 30</p>
+    <!-- <p><ion-icon name="calendar"></ion-icon> Estado: {{ a.estado }} </p> -->
+                 <div>
+                  <h1>Informe al :
+                      {{ celular }}</h1> 
+                 </div>
+          </ion-card-content>
+          <ion-row>
+            <ion-col >
+          <button (click)="EnviarMensajes(a.id_desaparecido, a.nombres +' '+ a.apellidos )"  class="botonEditar">
+              <ion-icon name="send"></ion-icon> 
+              Enviar mensaje
+            </button>
+          </ion-col >
+        </ion-row>
+        <!-- <ion-row>
+            <ion-col >
+            <button     class="botonEditar" >
+                <ion-icon name="list-box"></ion-icon> 
+                Ver detalles
+              </button>
+            </ion-col >
+          </ion-row> -->
+        </ion-card>
+        
+        
+      <!-- 
+
+      <ion-card *ngFor="let a of data; let index = index"> 
+        <ion-item>
+          <ion-icon name="locate"></ion-icon>
+        
+         {{ a.nombres }} {{  a.apellidos }}  
+        </ion-item>
+         
+            <ion-item>
+                <ion-icon name="list-box"></ion-icon>
+               Detalles:
+               Peso promedio : {{  a.peso_promedio }}, 
+               celular : {{  a.celular }},
+               ... 
+               
+             </ion-item>
+             
+      </ion-card> 
+      
+
+       -->
+  </ion-content>
+  
+ 

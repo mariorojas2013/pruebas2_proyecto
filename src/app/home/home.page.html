@@ -1,0 +1,45 @@
+<ion-header>
+      <!-- <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons> -->
+    </ion-header>
+    
+ 
+
+
+<ion-content padding class="bg-class">
+     
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  
+    
+      <ion-label color="light">Usuario</ion-label>
+      <ion-input type="text"  [(ngModel)]="usuario" class="roundtx papaddInpt" round name="title"></ion-input>
+     
+      <ion-label color="light">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="clave" class="roundtx papaddInpt" round name="title"></ion-input>
+      <br>
+
+    <button ion-button round class="wi" (click)="inicio()">Iniciar</button>
+    <br>
+    <ion-label color="light"  class="redes"> Iniciar con</ion-label> 
+
+    <br>
+ 
+    <button ion-button round class="fb redes" (click)="fb()">
+        <ion-icon name="logo-facebook"></ion-icon>
+      Facebook</button>
+      <br>
+    <button  ion-button round class="go redes" (click)="go()">
+        <ion-icon name="logo-google"></ion-icon>
+        Google</button><br>
+        <br>
+    <ion-label  class="redes" color="light">¿Deseas crear una cuenta? crear</ion-label>  <br>
+  <ion-label  class="redes" color="light">¿Olvidaste tu contraseña? restaurar</ion-label>
+</ion-content>

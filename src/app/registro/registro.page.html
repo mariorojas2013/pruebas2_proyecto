@@ -1,0 +1,133 @@
+
+<ion-header>
+  
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-buttons slot="start">
+          <button class="botongeneral"  ion-button icon-only (click)="act()">
+            <ion-icon name="flash" ></ion-icon>
+          </button>
+        </ion-buttons>
+          <ion-buttons slot="start">
+              <button class="botongeneral"  ion-button icon-only (click)="add()">
+                <ion-icon name="add" ></ion-icon>
+              </button>
+            </ion-buttons>
+            <ion-searchbar  [(ngModel)]="searchTerm"  animated (ionInput)="filterItems2($event)" animated placeholder="Buscar..."> </ion-searchbar>
+          
+         
+     
+   </ion-toolbar> 
+</ion-header>
+ 
+
+
+
+<ion-content   color="tertiary" >
+    <img mat-card-image src="assets/imgs/live-01.jpg">
+<ion-card *ngFor="let a of filterItemsw; let index = index" class="contCo">
+  <div *ngIf=" a.nombres != ''">
+  <ion-item>
+    <!-- <ion-avatar item-start>
+     <img src="assets/imgs/user.jpg">
+    </ion-avatar> -->
+     <h2>{{ a.nombres }} {{ a.apellidos }}</h2>
+    <!-- <p>Desaparecido desde 5 abril,2026</p> -->
+  </ion-item>
+
+   
+
+  <ion-card-content>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col > 
+        <ion-slides>
+            <ion-slide>
+                <img src="assets/imgs/{{  a.foto1 }}">
+            </ion-slide>
+            <ion-slide>
+                <img src="assets/imgs/{{  a.foto2 }}">
+            </ion-slide>
+            <ion-slide>
+                <img src="assets/imgs/{{  a.foto3 }}">
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+  <ion-row>
+    <ion-col >  
+    <p><ion-icon name="color-wand"></ion-icon> Color de ojos: {{ a.color_ojos }}</p>
+    <p><ion-icon name="color-wand"></ion-icon> color de cabello: {{ a.color_cabello }}</p>
+    <p><ion-icon name="color-wand"></ion-icon> color de piel: {{ a.color_piel }}</p>
+    <p><ion-icon name="man"></ion-icon> Peso promedio: {{ a.peso_promedio }}</p>
+    <p><ion-icon name="man"></ion-icon> estatura: {{ a.estatura }}</p>
+    <p><ion-icon name="male"></ion-icon> Genero: {{ a.genero }}</p>
+    <p><ion-icon name="calendar"></ion-icon> Fecha de nacimiento: {{ a.fecha_nacimiento }}</p>
+    <p><ion-icon name="calendar"></ion-icon> enfermedades: {{ a.enfermedades }}</p>
+    <p><ion-icon name="calendar"></ion-icon> Última Ubicación: Cerca a la calle 43 con 30</p>
+    <p><ion-icon name="calendar"></ion-icon> Estado: {{ a.estado }} </p>
+  </ion-col>
+  </ion-row>
+  
+</ion-grid>
+   
+     
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col *ngIf="a.estado != 'Revision'">
+      <button class="botonEditar"  (click)="edit(a.id_desaparecido)" ion-button icon-start clear >
+        <ion-icon name="create"></ion-icon>
+        <div>Editar</div>
+      </button>
+    </ion-col>
+    <ion-col *ngIf="a.estado == 'Revision'">
+      <button class="botonEditar"  (click)="quitarpublicar(a.id_desaparecido,a.nombres + ' ' + a.apellidos)" ion-button icon-start clear >
+        <ion-icon name="cloud-download"></ion-icon>
+        <div>No Publicar</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button class="botonEditar"  (click)="vermensajes" ion-button icon-start clear >
+        <ion-icon name="cloud-download"></ion-icon>
+        <div> Mensajes </div>
+      </button>
+    </ion-col>
+    <ion-col *ngIf="a.estado != 'Revision'">
+        <button class="botonEditar"  (click)="publicar(a.id_desaparecido,a.nombres + ' ' + a.apellidos)" ion-button icon-start clear >
+          <ion-icon name="cloud-upload"></ion-icon>
+          <div>Publicar</div>
+        </button>
+      </ion-col>
+      <ion-col *ngIf="a.estado != 'Revision'">
+          <button class="botonEditar" (click)="delete(a.id_desaparecido,a.nombres + ' ' + a.apellidos )" ion-button icon-start clear >
+            <ion-icon name="close-circle"></ion-icon> 
+            <div>Eliminar</div>
+          </button>
+        </ion-col>
+    <!-- <ion-col>
+      <button  (click)="delete(a.id_desaparecido)" ion-button icon-start clear small>
+         <ion-icon name="trash"></ion-icon>
+        <div>Eliminar</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button (click)="publicar(a.id_desaparecido)" ion-button icon-start clear small>
+        <ion-icon name="cloud-upload"></ion-icon>
+        <div>Publicar</div>
+      </button>
+    </ion-col> -->
+  </ion-row>
+</div>
+</ion-card>
+
+
+</ion-content>
+
+
+
+
+  

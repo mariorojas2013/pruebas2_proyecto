@@ -1,0 +1,123 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Registro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content >
+     <img mat-card-image src="assets/imgs/live-01.jpg">
+      Falta foto actual
+     <button ion-button block class="botonEdit" (click)="openCam()">Toma una foto</button>
+     <img src="{{image}}">
+   <ion-item>
+        <ion-label>Tipo de documento</ion-label>
+         <ion-select [(ngModel)]="tipo_documento" >
+            <ion-select-option value="CC">Cédula de Ciudadanía</ion-select-option>
+            <ion-select-option value="TI">Tarjeta de identidad</ion-select-option>
+            <ion-select-option value="RN">Registro de Nacido Vivo</ion-select-option>
+            <ion-select-option value="RC">Registro Civil</ion-select-option>
+            <ion-select-option value="CE">Cédula de Extranjería</ion-select-option>
+         </ion-select>  
+
+   
+    </ion-item>
+  <ion-item>
+    <ion-label position="floating">Número de documento</ion-label>
+    <ion-input [(ngModel)]="numero_documento" ></ion-input>
+  </ion-item>
+   <ion-item>
+    <ion-label position="floating">Nombres</ion-label>
+    <ion-input [(ngModel)]="nombres" ></ion-input>
+  </ion-item>
+   <ion-item>
+    <ion-label position="floating">Apellidos</ion-label>
+    <ion-input [(ngModel)]="apellidos"></ion-input>
+  </ion-item>
+   <ion-item>
+    <ion-label  >Fecha de Nacimiento</ion-label>
+    <ion-input [(ngModel)]="fecha_nacimiento" type="date"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Genero</ion-label>
+     <ion-select [(ngModel)]="genero" >
+        <ion-select-option>Masculino</ion-select-option>
+        <ion-select-option>Femenino</ion-select-option>
+</ion-select>    
+</ion-item>
+   <ion-item>
+    <ion-label position="floating">Color de piel</ion-label>
+    <ion-input [(ngModel)]="color_piel"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Color de cabello</ion-label>
+    <ion-input [(ngModel)]="color_cabello"></ion-input>
+  </ion-item>
+   <ion-item>
+    <ion-label position="floating">Color de ojos</ion-label>
+    <ion-input [(ngModel)]="color_ojos"></ion-input>
+  </ion-item>
+   <ion-item>
+    <ion-label position="floating">Estatura</ion-label>
+    <ion-input [(ngModel)]="estatura"></ion-input>
+  </ion-item>
+   <ion-item>
+    <ion-label position="floating">Peso promedio</ion-label>
+    <ion-input [(ngModel)]="peso_promedio"></ion-input>
+  </ion-item>
+   <ion-item>
+    <ion-label position="floating">Enfermedades</ion-label>
+    <ion-input [(ngModel)]="enfermedades"></ion-input>
+  </ion-item>
+  
+  
+  
+    
+  <ion-item *ngIf=" ID != ''"> 
+      Última Ubicación Desaparecido
+      <agm-map 
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+ 
+  [zoomControl]="true"
+  (mapClick)="mapClicked($event)">
+
+  <agm-marker 
+      *ngFor="let m of markersd; let i = index"
+      (markerClick)="clickedMarker(m.label, i)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]="m.label" 
+      [markerDraggable]="m.draggable"
+      (dragEnd)="markerDragEnd(m, $event)"
+      [iconUrl]="m.iconUrl" >
+      
+    <agm-info-window>
+      <strong>Información</strong>
+      Última Ubicación Desaparecido
+     
+    </agm-info-window>
+    
+  </agm-marker>
+   
+</agm-map>  
+ 
+  </ion-item>
+  <ion-item *ngIf=" ID != ''"> 
+    <button ion-button round class="botonEdit"   (click)="GuardarPosi()"> Guardar Ubicación </button>
+</ion-item>
+
+  <ion-item text-center>
+      <button ion-button round class="botonEdit" *ngIf="savebtn" (click)="save()">Guardar</button>
+      <br/>
+      <button ion-button round class="botonEdit" *ngIf="updatebtn" (click)="update()">Actualizar</button>
+      <br>
+      <button ion-button round class="botonEdit"  (click)="volver()">Volver</button>
+     
+      <!-- <button ion-button round style="min-width: 200px; padding: 10px 16px" *ngIf="deletebtn" (click)="delete()">Borrar</button> -->
+
+      <!-- <button ion-button round style="min-width: 200px; padding: 10px 16px" *ngIf="updatebtn" (click)="publicar()">Publicar</button> -->
+
+    </ion-item> 
+  </ion-content>
+  

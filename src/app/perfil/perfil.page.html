@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <img mat-card-image src="assets/imgs/live-01.jpg">
+
+    <ion-card  >
+   
+        <ion-card-header>
+            <!-- <ion-card-subtitle>Desaparecio el -Fecha-</ion-card-subtitle> -->
+            Datos perfil<br/>
+            <ion-card-title>{{id_usuario_sesion}}:  {{ nombre_usuario }}   </ion-card-title>
+          </ion-card-header>
+          
+
+        <ion-card-content>
+            <ion-item>
+                <ion-label position="floating">Celular</ion-label>
+                    <ion-input  [(ngModel)]="celular" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label position="floating">Dirección</ion-label>
+                          <ion-input  [(ngModel)]="direccion" ></ion-input>
+                        </ion-item>
+          <ion-item>
+            <ion-label position="floating">Clave actual</ion-label>
+                <ion-input type="password" [(ngModel)]="clave_actual" ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Nueva clave</ion-label>
+                <ion-input type="password" [(ngModel)]="nueva_cl" ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Confirmacion clave</ion-label>
+                <ion-input type="password" [(ngModel)]="confirm_cl"></ion-input>
+              </ion-item>
+              <button ion-button round class="botonEditar"   (click)="cambiarClave()">Cambiar clave</button>
+              <br/>
+              <br/>
+              <button ion-button round class="botonEditar"   (click)="cerrarSesion()">Cerrar Sesión</button>
+        </ion-card-content>
+        </ion-card>
+
+</ion-content>
