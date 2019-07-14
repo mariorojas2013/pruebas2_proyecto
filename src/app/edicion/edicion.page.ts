@@ -199,7 +199,7 @@ export class EdicionPage implements OnInit {
                     .subscribe(data => {
                       
                          console.log(data);
-                         this.guardarposiToast();
+                          this.ToastGeneral('Se ha actualizado la ubicación', 2000);
                 
                      
                      }, error => {
@@ -209,9 +209,7 @@ export class EdicionPage implements OnInit {
        
       // this.navCtrl.pop();
     }
-    async guardarposiToast() {
-      this.ToastGeneral('Se ha actualizado la ubicación', 2000);
-    }
+     
 
     async ToastGeneral(text:any, duracion:any)
     {
@@ -309,9 +307,7 @@ export class EdicionPage implements OnInit {
       }
       
   }
-  async saveToast() {
-    this.ToastGeneral('Se ha Guardado', 3000);
-  }
+   
   save()
   {
     if(this.numero_documento == '' ||
@@ -355,7 +351,7 @@ export class EdicionPage implements OnInit {
       this.http.post(this.apiUrl,postData,this.header)
                   .subscribe(data => {
                     
-                    this.saveToast();
+                    this.ToastGeneral('Se ha Guardado', 3000);
                     this.navCtrol.pop();
                     
                    
@@ -367,9 +363,7 @@ export class EdicionPage implements OnInit {
     
   }
 
-  async updateToast() {
-    this.ToastGeneral('Se ha Actualizado', 3000);
-  }
+ 
   update()
   {
     if(this.numero_documento == '' ||
@@ -416,7 +410,7 @@ export class EdicionPage implements OnInit {
       this.http.post(this.apiUrl,postData,this.header)
                   .subscribe(data => {
                     
-                    this.updateToast();
+                    this.ToastGeneral('Se ha Actualizado', 3000);
                        
               
                    
@@ -427,9 +421,7 @@ export class EdicionPage implements OnInit {
     }
     this.navCtrol.pop();
   }
-  async deleteToast() {
-    this.ToastGeneral('Se ha Eliminado', 3000);
-  }
+   
   delete()
   {
      let postData = {
@@ -440,7 +432,8 @@ export class EdicionPage implements OnInit {
       this.http.post(this.apiUrl,postData,this.header)
                   .subscribe(data => {
                     
-                    this.deleteToast();
+                this.ToastGeneral('Se ha Eliminado', 3000);
+
                       
                    
                    }, error => {
