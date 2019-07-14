@@ -332,13 +332,13 @@ export class EdicionPage implements OnInit {
       
       let postData = {
         "tipo_documento" : this.tipo_documento,
+        "peso_promedio" : this.peso_promedio,
         "numero_documento" : this.numero_documento,
         "nombres" : this.nombres,
+        "color_cabello" : this.color_cabello,
         "apellidos" : this.apellidos,
         "color_ojos" : this.color_ojos,
-        "color_cabello" : this.color_cabello,
         "color_piel" : this.color_piel,
-        "peso_promedio" : this.peso_promedio,
         "genero" : this.genero,
         "estatura" : this.estatura,
         "telefono_fijo" : this.telefono_fijo,
