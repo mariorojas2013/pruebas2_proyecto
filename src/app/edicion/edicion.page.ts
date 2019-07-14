@@ -141,7 +141,7 @@ export class EdicionPage implements OnInit {
       // this.navCtrol.push(AnuncioMapPage,{ID: this.ID,Ubicacion : this.ultima_ubicacion});
     }
     mapClicked($event: MouseEvent) {
-      if(this.existeMark==false)
+      if(!this.existeMark)
       {
         this.markersd.push({
           lat: $event.coords.lat,
@@ -179,10 +179,7 @@ export class EdicionPage implements OnInit {
         console.log(results);
         if (status === 'OK') {
           if (results[0]) {
-            const address = results[0].formatted_address;
-            const addressList = address.split(',');
-            // this.address = addressList[0];
-            // this.state = addressList.slice(2).join(', ');
+            console.log('emitir una posicion');
           }
         }
       });
@@ -213,11 +210,16 @@ export class EdicionPage implements OnInit {
       // this.navCtrl.pop();
     }
     async guardarposiToast() {
+      this.ToastGeneral('Se ha actualizado la ubicación', 2000);
+    }
+
+    async ToastGeneral(text:any, duracion:any)
+    {
       const toast = await this.toastCtrl.create({
-        message: 'Se ha actualizado la ubicación',
-        duration: 2000
+        message: text,
+        duration: duracion
       });
-      toast.present();
+      toast.present(); 
     }
     loadatos()
     {
@@ -308,11 +310,7 @@ export class EdicionPage implements OnInit {
       
   }
   async saveToast() {
-    const toast = await this.toastCtrl.create({
-      message: 'Se ha Guardado',
-      duration: 3000
-    });
-    toast.present();
+    this.ToastGeneral('Se ha Guardado', 3000);
   }
   save()
   {
@@ -370,11 +368,7 @@ export class EdicionPage implements OnInit {
   }
 
   async updateToast() {
-    const toast = await this.toastCtrl.create({
-      message: 'Se ha Actualizado',
-      duration: 3000
-    });
-    toast.present();
+    this.ToastGeneral('Se ha Actualizado', 3000);
   }
   update()
   {
@@ -434,11 +428,7 @@ export class EdicionPage implements OnInit {
     this.navCtrol.pop();
   }
   async deleteToast() {
-    const toast = await this.toastCtrl.create({
-      message: 'Se ha Eliminado',
-      duration: 3000
-    });
-    toast.present();
+    this.ToastGeneral('Se ha Eliminado', 3000);
   }
   delete()
   {

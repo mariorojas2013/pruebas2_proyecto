@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'consulta', loadChildren: './consulta/consulta.module#ConsultaPageModule' },
   { path: 'edicion/:id', loadChildren: './edicion/edicion.module#EdicionPageModule' },
   { path: 'mensajes/:id/:nombre', loadChildren: './mensajes/mensajes.module#MensajesPageModule' },
-  { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' }
+  { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },
+  { path: 'registro-user', loadChildren: './registro-user/registro-user.module#RegistroUserPageModule' }
 ];
 
 @NgModule({

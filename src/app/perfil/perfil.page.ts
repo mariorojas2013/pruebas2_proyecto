@@ -19,6 +19,7 @@ export class PerfilPage implements OnInit {
   header:any = {};
   celular:any;
   direccion: any; 
+  filtro: any; 
   
   datae:any =[
     {"nombre":''}];
@@ -30,6 +31,7 @@ export class PerfilPage implements OnInit {
       this.nombre_usuario = this.local.get(`nombre_usuario`);
       this.celular = this.local.get(`celular`);
       this.direccion = this.local.get(`direccion`);
+      this.filtro = this.local.get(`filtro`);
      }
 
     
@@ -45,6 +47,9 @@ export class PerfilPage implements OnInit {
         let postData = {
           "id":this.id_usuario_sesion, 
           "clave_actual": this.clave_actual,
+          "celular": this.celular,
+          "direccion": this.direccion,
+          "filtros": this.filtro,
           "confirm_cl" : this.confirm_cl
         }
         this.apiUrl = 'http://localhost/2019/IonicServe/update_clave.php';
@@ -89,25 +94,24 @@ export class PerfilPage implements OnInit {
 
     }
     async cambiaClaveToast() {
-      const toast = await this.toastCtrl.create({
-        message: 'Se ha cambiado la clave',
-        duration: 2000
-      });
-      toast.present();
+      this.ToastGeneral('Se ha cambiado l', 2000);
+ 
     }
     async NocoincideToast() {
-      const toast = await this.toastCtrl.create({
-        message: 'No coincide la nueva clave',
-        duration: 2000
-      });
-      toast.present();
+      this.ToastGeneral('No coincide la nueva clave', 2000);
+ 
     }
     async ClaveActErToast() {
+      this.ToastGeneral('La clave actual esta errada', 2000);
+      
+    }
+    async ToastGeneral(text:any, duracion:any)
+    {
       const toast = await this.toastCtrl.create({
-        message: 'La clave actual esta errada',
-        duration: 2000
+        message: text,
+        duration: duracion
       });
-      toast.present();
+      toast.present(); 
     }
      
 

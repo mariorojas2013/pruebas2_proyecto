@@ -26,15 +26,11 @@
 
 
 <ion-content   color="tertiary" >
-    <img mat-card-image src="assets/imgs/live-01.jpg">
+    <img alt="encabezado principal" mat-card-image src="assets/imgs/live-01.jpg">
 <ion-card *ngFor="let a of filterItemsw; let index = index" class="contCo">
   <div *ngIf=" a.nombres != ''">
   <ion-item>
-    <!-- <ion-avatar item-start>
-     <img src="assets/imgs/user.jpg">
-    </ion-avatar> -->
      <h2>{{ a.nombres }} {{ a.apellidos }}</h2>
-    <!-- <p>Desaparecido desde 5 abril,2026</p> -->
   </ion-item>
 
    
@@ -46,13 +42,13 @@
             <ion-col > 
         <ion-slides>
             <ion-slide>
-                <img src="assets/imgs/{{  a.foto1 }}">
+                <img alt="fotos desaparecido" src="assets/imgs/{{  a.foto1 }}">
             </ion-slide>
             <ion-slide>
-                <img src="assets/imgs/{{  a.foto2 }}">
+                <img alt="fotos desaparecido" src="assets/imgs/{{  a.foto2 }}">
             </ion-slide>
             <ion-slide>
-                <img src="assets/imgs/{{  a.foto3 }}">
+                <img alt="fotos desaparecido" src="assets/imgs/{{  a.foto3 }}">
             </ion-slide>
           </ion-slides>
         </ion-col>
@@ -108,18 +104,6 @@
             <div>Eliminar</div>
           </button>
         </ion-col>
-    <!-- <ion-col>
-      <button  (click)="delete(a.id_desaparecido)" ion-button icon-start clear small>
-         <ion-icon name="trash"></ion-icon>
-        <div>Eliminar</div>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button (click)="publicar(a.id_desaparecido)" ion-button icon-start clear small>
-        <ion-icon name="cloud-upload"></ion-icon>
-        <div>Publicar</div>
-      </button>
-    </ion-col> -->
   </ion-row>
 </div>
 </ion-card>

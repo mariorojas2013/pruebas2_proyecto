@@ -73,10 +73,7 @@ filterItems2(ev: any){
   this.filterItemsw = this.data.filter(item =>
       item.nombres.toLowerCase().indexOf(val.toLowerCase()) > -1);
   }
-  else
-  {
   
-  }
 }
 
 close()

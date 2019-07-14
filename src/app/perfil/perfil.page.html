@@ -8,12 +8,11 @@
 </ion-header>
 
 <ion-content>
-      <img mat-card-image src="assets/imgs/live-01.jpg">
+      <img alt="encabezado principal" mat-card-image src="assets/imgs/live-01.jpg">
 
     <ion-card  >
    
         <ion-card-header>
-            <!-- <ion-card-subtitle>Desaparecio el -Fecha-</ion-card-subtitle> -->
             Datos perfil<br/>
             <ion-card-title>{{id_usuario_sesion}}:  {{ nombre_usuario }}   </ion-card-title>
           </ion-card-header>
@@ -40,7 +39,22 @@
                 <ion-label position="floating">Confirmacion clave</ion-label>
                 <ion-input type="password" [(ngModel)]="confirm_cl"></ion-input>
               </ion-item>
-              <button ion-button round class="botonEditar"   (click)="cambiarClave()">Cambiar clave</button>
+              <ion-item>
+                <ion-label position="floating">Filtros de busqueda</ion-label>
+                
+              </ion-item>
+            <ion-radio-group>
+              <ion-item>
+                <ion-label>Por nombres</ion-label>
+                <ion-radio slot="start"  [(ngModel)]="filtro" value="Por_nombre"  value="1" ></ion-radio>
+              </ion-item>
+          
+              <ion-item>
+                <ion-label>Por ubicacion</ion-label>
+                <ion-radio slot="start"  [(ngModel)]="filtro" value="2"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+              <button ion-button round class="botonEditar"   (click)="cambiarClave()">Actualizar</button>
               <br/>
               <br/>
               <button ion-button round class="botonEditar"   (click)="cerrarSesion()">Cerrar Sesión</button>

@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { LocalStorageService, SessionStorageService, LocalStorage, SessionStorage } from 'angular-web-storage';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { Router } from '@angular/router';
+ 
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -19,15 +21,14 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,public local: LocalStorageService,
     private fcm: FCM,
-    private router: Router
+    private router: Router 
   ) {
+  
     this.initializeApp();
+ 
+    this.fcm.subscribeToTopic('people');
 
     this.fcm.getToken().then(token => {
-      console.log(token);
-    });
-
-    this.fcm.onTokenRefresh().subscribe(token => {
       console.log(token);
     });
 
@@ -41,6 +42,11 @@ export class AppComponent {
         this.router.navigate([data.landing_page, data.price]);
       }
     });
+
+    this.fcm.onTokenRefresh().subscribe(token => {
+      console.log(token);
+    });
+   
 
     this.id_usuario_sesion = this.local.get(`id_usuario`);
     if(this.id_usuario_sesion == '')
@@ -77,6 +83,9 @@ export class AppComponent {
 
 
   }
+
+
+   
 
   initializeApp() {
     this.platform.ready().then(() => {

@@ -15,6 +15,10 @@ import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
 
 import { FCM } from '@ionic-native/fcm/ngx';
+
+
+
+
 // import { RegistroPage } from '../app/registro/registro.page';
 @NgModule({
   declarations: [AppComponent ],
@@ -24,6 +28,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(),
+  
     // AgmCoreModule.forRoot({
     //   // please get your own API key here:
     //   // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
@@ -33,7 +38,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen,  
     FCM,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

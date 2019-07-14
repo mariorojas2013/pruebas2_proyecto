@@ -59,17 +59,11 @@ export class MensajesPage implements OnInit {
           "id_usuario_envia":this.id_usuario_sesion ,
           "mensaje" : this.texto_mensaje
         }
-        // this.apiUrl = ;
-  
         this.http.post('http://localhost/2019/IonicServe/mensajes_envio.php',postData,this.header)
                     .subscribe(data => {
-                      
                          console.log(data);
                          this.enviaMensajeToast();
                          this.getdatos(this.ID);
-
-                
-                     
                      }, error => {
                       console.log(error);
                     });

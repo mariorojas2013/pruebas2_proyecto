@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
  
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,14 +7,20 @@ import { RouterModule } from '@angular/router';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http'; 
 import { LocalStorageService, SessionStorageService, LocalStorage, SessionStorage } from 'angular-web-storage';
- 
+import {
+  Plugins,
+  PushNotification,
+  PushNotificationToken,
+  PushNotificationActionPerformed } from '@capacitor/core';
+
+  const { PushNotifications } = Plugins;
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   header:any = {};
   apiUrl = '';
@@ -34,7 +40,40 @@ export class HomePage {
   }
 
 
+ngOnInit() {
+    console.log('Initializing HomePage');
 
+    // Register with Apple / Google to receive push via APNS/FCM
+    PushNotifications.register();
+
+    // On succcess, we should be able to receive notifications
+    PushNotifications.addListener('registration', 
+      (token: PushNotificationToken) => {
+        alert('Push registration success, token: ' + token.value);
+      }
+    );
+
+    // Some issue with our setup and push will not work
+    PushNotifications.addListener('registrationError', 
+      (error: any) => {
+        alert('Error on registration: ' + JSON.stringify(error));
+      }
+    );
+
+    // Show us the notification payload if the app is open on our device
+    PushNotifications.addListener('pushNotificationReceived', 
+      (notification: PushNotification) => {
+        alert('Push received: ' + JSON.stringify(notification));
+      }
+    );
+
+    // Method called when tapping on a notification
+    PushNotifications.addListener('pushNotificationActionPerformed', 
+      (notification: PushNotificationActionPerformed) => {
+        alert('Push action performed: ' + JSON.stringify(notification));
+      }
+    );
+}
 
   public inicio()
   {
@@ -44,23 +83,18 @@ export class HomePage {
         "usuario": this.usuario,
         "clave": this.clave 
       }
-  
       this.http.post(this.apiUrl,postData,this.header)
               .subscribe(data => {
-                
                   this.datae =  data;
                   if(this.datae.auth =="ok")
                   {
-                    console.log(this.local);
-                    console.log('  ');
-                    console.log(data);
                       this.navCtrl.navigateRoot('registro');
-                      // this.sessionValue = `Hello`;
                       this.local.set(`sesion_ok`, 'ok');
                       this.local.set(`id_usuario`, this.datae.id_usuario);
                       this.local.set(`nombre_usuario`, this.datae.nombre_usuario);
                       this.local.set(`celular`, this.datae.celular);
                       this.local.set(`direccion`, this.datae.direccion);
+                      this.local.set(`filtro`, this.datae.filtros);
                   }
                   else
                   {
@@ -82,5 +116,8 @@ export class HomePage {
     });
     toast.present();
   }
-  
+  crear()
+  {
+    this.navCtrl.navigateRoot('registro-user');
+  }
 }

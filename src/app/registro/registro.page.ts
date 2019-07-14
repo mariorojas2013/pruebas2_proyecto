@@ -72,13 +72,18 @@ export class RegistroPage implements OnInit {
     this.getdatos();
     }
   }
- 
-  async deleteToast() {
+
+  async ToastGeneral(text:any, duracion:any)
+  {
     const toast = await this.toastCtrl.create({
-      message: 'Se ha Eliminado',
-      duration: 3000
+      message: text,
+      duration: duracion
     });
-    toast.present();
+    toast.present(); 
+  } 
+
+  async deleteToast() {
+    this.ToastGeneral('Se ha Eliminado', 3000)
   }
   delete(id : any, nombre : any)
   {
@@ -129,11 +134,7 @@ export class RegistroPage implements OnInit {
   }
 
   async publicarToast() {
-    const toast = await this.toastCtrl.create({
-      message: 'Se ha recibido la publicacion, estará en revisión',
-      duration: 6000
-    });
-    toast.present();
+    this.ToastGeneral('Se ha recibido la publicacion, estará en revisión', 3000)
   }
   async publicar(id: any, nombre: any) {
     const toast = await this.toastCtrl.create({

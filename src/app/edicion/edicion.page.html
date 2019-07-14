@@ -3,12 +3,10 @@
       <ion-title>Registro</ion-title>
     </ion-toolbar>
   </ion-header>
-  
   <ion-content >
-     <img mat-card-image src="assets/imgs/live-01.jpg">
-      Falta foto actual
+     <img alt="encabezado principal" mat-card-image src="assets/imgs/live-01.jpg">
      <button ion-button block class="botonEdit" (click)="openCam()">Toma una foto</button>
-     <img src="{{image}}">
+     <img alt="fotos desaparecido" src="{{image}}">
    <ion-item>
         <ion-label>Tipo de documento</ion-label>
          <ion-select [(ngModel)]="tipo_documento" >
@@ -18,8 +16,6 @@
             <ion-select-option value="RC">Registro Civil</ion-select-option>
             <ion-select-option value="CE">Cédula de Extranjería</ion-select-option>
          </ion-select>  
-
-   
     </ion-item>
   <ion-item>
     <ion-label position="floating">Número de documento</ion-label>
@@ -113,11 +109,6 @@
       <button ion-button round class="botonEdit" *ngIf="updatebtn" (click)="update()">Actualizar</button>
       <br>
       <button ion-button round class="botonEdit"  (click)="volver()">Volver</button>
-     
-      <!-- <button ion-button round style="min-width: 200px; padding: 10px 16px" *ngIf="deletebtn" (click)="delete()">Borrar</button> -->
-
-      <!-- <button ion-button round style="min-width: 200px; padding: 10px 16px" *ngIf="updatebtn" (click)="publicar()">Publicar</button> -->
-
     </ion-item> 
   </ion-content>
   
